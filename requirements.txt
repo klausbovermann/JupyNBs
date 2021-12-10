@@ -3,3 +3,4 @@ cufflinks
 sympy
 matplotlib
 IPython
+graphviz
