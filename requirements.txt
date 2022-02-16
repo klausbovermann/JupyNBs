@@ -3,4 +3,5 @@ cufflinks
 sympy
 matplotlib
 IPython
+graphviz
 jupyter_contrib_nbextensions
