@@ -356,6 +356,7 @@ class DecisionTree:
         self.target = target
         self.data = data
 
+
         if (not self.data.empty) and (self.target != None):
             self.target_values = self.data[self.target].value_counts().sort_index().index.tolist()
             self.return_leaf_node(self.data, self.target)
@@ -393,10 +394,8 @@ class DecisionTree:
                     return 'data is missing'
                 else:
                     data = self.data
-            else:
-                self.data = data  
-
-            self.data = data
+       
+            self.data = data.dropna(subset=[self.target]) 
             self.target_values = self.data[self.target].value_counts().sort_index().index.tolist()
 
             self.tree_edges = []
@@ -1137,7 +1136,7 @@ class DecisionTree:
             else:
                 split_info = str(None)
 
-            node_info = str(n.node_nr) + ';' + n.label + ';' + n.type + ';' + split_info
+            node_info = str(n.node_nr) + ';' + str(n.label) + ';' + n.type + ';' + split_info
             encoded_unicode = node_info.encode("utf8")
             file.write(encoded_unicode)
             file.write('\n'.encode("utf8"))
